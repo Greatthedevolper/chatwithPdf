@@ -540,7 +540,7 @@ ul {
     width: 550px;
   }
 
-  .right-div .right-inner-div {
+  .right-div .right-inner-div.active {
     grid-template-columns: 550px auto;
   }
 }
