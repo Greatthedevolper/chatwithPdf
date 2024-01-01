@@ -1,131 +1,421 @@
-<html lang="en"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>File Upload with XMLHttpRequest</title>
-    <link rel="stylesheet" href="/static/style.css">
-    
+    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="stylesheet" href="/static/all.min.css" />
+
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="/static/app.js"></script>
-</head>
-<body data-new-gr-c-s-check-loaded="14.1147.0" data-gr-ext-installed="">
-<div id="loader" style="display: none">
-    <div class="loader-spinner"></div>
-</div>
-<div id="main">
-    <div id="col-1">
-        <div id="menu">
-            <form id="uploadForm">
-                <label for="inp-1">
-                    <span> + New Chat</span>
-                    <span class="drop-text">Drop PDF here</span>
-                    <input id="inp-1" type="file" name="file" accept="application/pdf">
-                </label>
-                <button id="btn-1" class="upload-btn" type="button" onclick="upload()">
-                    Upload
-                </button>
-            </form>
-        </div>
+  </head>
+  <body data-new-gr-c-s-check-loaded="14.1147.0" data-gr-ext-installed="">
+    <div id="loader" style="display: none">
+      <div class="loader-spinner"></div>
+    </div>
+    <div id="main">
+      <div id="col-1">
         <div id="chat-history">
-            <a class="logo-wrapper">
-                <img src="static/images/logo.png" alt="">
-            </a>
+          <a class="logo-wrapper">
+            <div class="icon-wrapper">
+              <img src="static/images/Logo.svg" alt="" />
+            </div>
+            <span>TAAM.Ai</span>
+          </a>
+          <ul class="tabs-wrapper">
+            <li>
+              <a href="#" class="new-chat-btn">
+                <span class="icon-wrapper">
+                  <i class="fa-solid fa-plus"></i>
+                </span>
+                <span>New Chat</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="chat-btn pdf-btn" id="chat-with-pdf">
+                <i class="fa-solid fa-folder-open"></i>
+                <span>Chat width Document</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="chat-btn web-btn" id="chat-with-web">
+                <i class="fa-regular fa-pen-to-square"></i>
+                <span>Ai Chat</span>
+              </a>
+            </li>
+          </ul>
+          <div class="chat-inner-wrapper">
             <div class="heading-wrapper">
-                <svg stroke="currentColor" fill="var(--answerColor)" stroke-width="0" viewBox="0 0 30 30" focusable="false" class="chakra-icon css-18176s2" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0z"></path><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z"></path></svg>
-                <h3>Chat history</h3>
+              <i class="fa-solid fa-clock-rotate-left"></i>
+              <h3>Chat history</h3>
+              <i class="fa-solid fa-chevron-down"></i>
+              <i class="fa-solid fa-chevron-right"></i>
             </div>
             <ul>
-                <li>
-                    <button class="list-item active list_item_DAf6AA42E2C5E914" 
-                    type="button" key="DAf6AA42E2C5E914" 
-                    onclick="loadChat('DAf6AA42E2C5E914', 'html')">
-                            <svg stroke="currentColor" fill="var(--answerColor)" stroke-width="0" viewBox="0 0 30 30" focusable="false" class="chakra-icon css-18176s2" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0z"></path><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path>
-                            </svg>
-                        <span>pdf-js-express-default-doc-v2.pdf</span>
-                        
-                    </button>
-                </li>
-                <li>
-                    <button class="list-item list_item_fAf946Cc02DD7770" 
-                    type="button" key="fAf946Cc02DD7770" 
-                    onclick="loadChat('fAf946Cc02DD7770', 'html')">
-                    <svg stroke="currentColor" fill="var(--answerColor)" stroke-width="0" viewBox="0 0 30 30" focusable="false" class="chakra-icon css-18176s2" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0z"></path><path d="M11.99 18.54l-7.37-5.73L3 14.07l9 7 9-7-1.63-1.27-7.38 5.74zM12 16l7.36-5.73L21 9l-9-7-9 7 1.63 1.27L12 16z"></path></svg>
-                        <span>Pinia-Cheat-Sheet.pdf</span>
-                        
-                    </button>
-                </li>
-                
-                <li>
-                    <button class="list-item list_item_E5ecf9ee8b7DAB40" 
-                    type="button" key="E5ecf9ee8b7DAB40" 
-                    onclick="loadChat('E5ecf9ee8b7DAB40', 'html')">
-                    <svg stroke="currentColor" fill="var(--answerColor)" stroke-width="0" viewBox="0 0 30 30" focusable="false" class="chakra-icon css-18176s2" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0z"></path><path d="M11.99 18.54l-7.37-5.73L3 14.07l9 7 9-7-1.63-1.27-7.38 5.74zM12 16l7.36-5.73L21 9l-9-7-9 7 1.63 1.27L12 16z"></path></svg>
-                        <span>priscription.pdf</span>
-                        
-                    </button>
-                </li>                
+              <li>
+                <button
+                  class="list-item active list_item_DAf6AA42E2C5E914"
+                  type="button"
+                  key="DAf6AA42E2C5E914"
+                  onclick="loadChat('DAf6AA42E2C5E914', 'html')"
+                >
+                  <i class="fa-solid fa-square"></i>
+                  <input
+                    type="text"
+                    value="pdf-js-express-default-doc-v2.pdf"
+                    readonly
+                  />
+                  <div class="action-div">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                    <i class="fa-solid fa-trash-can"></i>
+                  </div>
+                  <div class="edit-div">
+                    <i class="fa-solid fa-check"></i>
+                    <i class="fa-solid fa-xmark"></i>
+                  </div>
+                </button>
+              </li>
+              <li>
+                <button
+                  class="list-item list_item_fAf946Cc02DD7770"
+                  type="button"
+                  key="fAf946Cc02DD7770"
+                  onclick="loadChat('fAf946Cc02DD7770', 'html')"
+                >
+                  <i class="fa-solid fa-square"></i>
+                  <input type="text" value="Pinia-Cheat-Sheet.pdf" readonly />
+                  <div class="action-div">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                    <i class="fa-solid fa-trash-can"></i>
+                  </div>
+                  <div class="edit-div">
+                    <i class="fa-solid fa-check"></i>
+                    <i class="fa-solid fa-xmark"></i>
+                  </div>
+                </button>
+              </li>
+
+              <li>
+                <button
+                  class="list-item list_item_E5ecf9ee8b7DAB40"
+                  type="button"
+                  key="E5ecf9ee8b7DAB40"
+                  onclick="loadChat('E5ecf9ee8b7DAB40', 'html')"
+                >
+                  <i class="fa-solid fa-square"></i>
+                  <input type="text" value="priscription.pdf" readonly />
+                  <div class="action-div">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                    <i class="fa-solid fa-trash-can"></i>
+                  </div>
+                  <div class="edit-div">
+                    <i class="fa-solid fa-check"></i>
+                    <i class="fa-solid fa-xmark"></i>
+                  </div>
+                </button>
+              </li>
             </ul>
+          </div>
         </div>
-    </div>
-    <div class="right-div">
-        <header>
-            <nav>
-                <ul>
-                    <li>
-                        <a href="#" class="show-pdf" id="chat-with-pdf">
-                            Show Pdf
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="active" id="chat-with-pdf">
-                            Chat with pdf
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" id="chat-with-web">
-                            Chat with web
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-
-        <div class="right-inner-div"> 
-            <div id="col-2">
-                <div id="pdf">
-                    <embed type="application/pdf" id="embed-wrapper"  src="static\images\ARTIFICIAL_INTELLIGENCE.pdf">
-                </div>
-            </div>
-            <div id="col-3">
-                <div class="main-chat-wrapper">
-                    <div id="chat">
-                        <div id="summary"><h4>ARTIFICIAL INTELLIGENCE.pdf </h4><div class="summery-wrapper"><span class="copy-icon" onclick="copyToClipboard('summary')"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><path fill="var(--answerColor)" d="M384 336H192c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16l140.1 0L400 115.9V320c0 8.8-7.2 16-16 16zM192 384H384c35.3 0 64-28.7 64-64V115.9c0-12.7-5.1-24.9-14.1-33.9L366.1 14.1c-9-9-21.2-14.1-33.9-14.1H192c-35.3 0-64 28.7-64 64V320c0 35.3 28.7 64 64 64zM64 128c-35.3 0-64 28.7-64 64V448c0 35.3 28.7 64 64 64H256c35.3 0 64-28.7 64-64V416H272v32c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V192c0-8.8 7.2-16 16-16H96V128H64z"></path> </svg> </span><p>The document appears to be titled "What is Artificial Intelligence?" and was created using Microsoft PowerPoint 2016. The PDF document contains information about the information flow between the "human" and "machine" components of a system. It emphasizes the importance of understanding the capabilities and flexibilities of both components. The document also includes illustrations and references to external resources for further information. The document has a total of 71 pages.</p><h5>Suggested Questions:</h5><ul class="suggested-list"><li><button role="none" type="button"><span role="button" class="icon-wrapper" onclick="chat2(&quot;7A10AE&quot;)" id="7A10AE"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><path fill="fill=" var(--answercolor)"="" d="M480 96c17.7 0 32 14.3 32 32s-14.3 32-32 32l-208 0 0-64 208 0zM320 288c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0zm64-64c0 17.7-14.3 32-32 32l-48 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l48 0c17.7 0 32 14.3 32 32zM288 384c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0zm-88-96l.6 0c-5.4 9.4-8.6 20.3-8.6 32c0 13.2 4 25.4 10.8 35.6C177.9 364.3 160 388.1 160 416c0 11.7 3.1 22.6 8.6 32l-8.6 0C71.6 448 0 376.4 0 288l0-61.7c0-42.4 16.9-83.1 46.9-113.1l11.6-11.6C82.5 77.5 115.1 64 149 64l27 0c35.3 0 64 28.7 64 64l0 88c0 22.1-17.9 40-40 40s-40-17.9-40-40l0-56c0-8.8-7.2-16-16-16s-16 7.2-16 16l0 56c0 39.8 32.2 72 72 72z"></path></svg></span><span id="7A10AE-span">What is the importance of understanding the capabilities and flexibilities of both the "human" and "machine" components in a system?</span></button></li><li><button role="none" type="button"><span role="button" class="icon-wrapper" onclick="chat2(&quot;DEC6C4&quot;)" id="DEC6C4"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><path fill="fill=" var(--answercolor)"="" d="M480 96c17.7 0 32 14.3 32 32s-14.3 32-32 32l-208 0 0-64 208 0zM320 288c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0zm64-64c0 17.7-14.3 32-32 32l-48 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l48 0c17.7 0 32 14.3 32 32zM288 384c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0zm-88-96l.6 0c-5.4 9.4-8.6 20.3-8.6 32c0 13.2 4 25.4 10.8 35.6C177.9 364.3 160 388.1 160 416c0 11.7 3.1 22.6 8.6 32l-8.6 0C71.6 448 0 376.4 0 288l0-61.7c0-42.4 16.9-83.1 46.9-113.1l11.6-11.6C82.5 77.5 115.1 64 149 64l27 0c35.3 0 64 28.7 64 64l0 88c0 22.1-17.9 40-40 40s-40-17.9-40-40l0-56c0-8.8-7.2-16-16-16s-16 7.2-16 16l0 56c0 39.8 32.2 72 72 72z"></path></svg></span><span id="DEC6C4-span">How does the information flow between the "human" and "machine" components in a typical system?</span></button></li><li><button role="none" type="button"><span role="button" class="icon-wrapper" onclick="chat2(&quot;D1B26C&quot;)" id="D1B26C"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><path fill="fill=" var(--answercolor)"="" d="M480 96c17.7 0 32 14.3 32 32s-14.3 32-32 32l-208 0 0-64 208 0zM320 288c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0zm64-64c0 17.7-14.3 32-32 32l-48 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l48 0c17.7 0 32 14.3 32 32zM288 384c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0zm-88-96l.6 0c-5.4 9.4-8.6 20.3-8.6 32c0 13.2 4 25.4 10.8 35.6C177.9 364.3 160 388.1 160 416c0 11.7 3.1 22.6 8.6 32l-8.6 0C71.6 448 0 376.4 0 288l0-61.7c0-42.4 16.9-83.1 46.9-113.1l11.6-11.6C82.5 77.5 115.1 64 149 64l27 0c35.3 0 64 28.7 64 64l0 88c0 22.1-17.9 40-40 40s-40-17.9-40-40l0-56c0-8.8-7.2-16-16-16s-16 7.2-16 16l0 56c0 39.8 32.2 72 72 72z"></path></svg></span><span id="D1B26C-span">What external resources are available for further information on the topic of information flow in systems?</span></button></li></ul></div></div>
-
-                        <div id="chat-list"><p class="keys">what this document is about?</p><p class="values" id="885FC49FA" onclick="copyToClipboard(&quot;885FC49FA&quot;)">The document is titled "What is Artificial Intelligence?" and it provides information about the concept of artificial intelligence.</p><p class="keys">What is the relationship between artificial intelligence and the concept of information flow in systems?</p><p class="values" id="B25AF3CB7" onclick="copyToClipboard(&quot;B25AF3CB7&quot;)">The relationship between artificial intelligence and the concept of information flow in systems is discussed on the following pages in the PDF document:<br><br>1. Page 8: The illustration on this page shows a typical information flow between the "human" and "machine" components of a system. It emphasizes the importance of understanding the capabilities and flexibilities of both components.<br><br>2. Page 59: This page explains that for an agent to be "intelligent," it must be able to understand the meaning of information. Information is exchanged in messages and must be conveyed in a selected representation language. The receiver must have the ability to interpret the information correctly according to the intended meaning or semantics.</p></div>
-                    </div>
-                    <div id="chat-form" style="display: block">
-                        <div class="form-inner-wrapper">
-                            <input type="hidden" id="file_hash" value="CC706c93bbCc5EDE">
-                            <input type="text" id="queryInput" placeholder="Type your message here..." required="">
-                            <button onclick="chat()" type="button" class="ask-button">
-                                Submit
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div id="menu">
+          <form id="uploadForm">
+            <label for="inp-1">
+              <span> + New Chat</span>
+              <span class="drop-text">Drop PDF here</span>
+              <input
+                id="inp-1"
+                type="file"
+                name="file"
+                accept="application/pdf"
+              />
+            </label>
+            <button
+              id="btn-1"
+              class="upload-btn"
+              type="button"
+              onclick="upload()"
+            >
+              Upload
+            </button>
+          </form>
         </div>
-    </div>
-</div>
-<script src="https://cwp.taam.ai/chat_with_pdf.js"></script>
-<script>
+        <div class="profile-div">
+          <div class="profile-inner-wrapper">
+            <div class="img-wrapper">
+              <img src="./static/images/profile.jpg" alt="" />
+            </div>
+            <h4>Tameem Hezam</h4>
+            <span role="button" type="button" class="scan-modal-btn">
+              <i class="fa-solid fa-mobile-button"></i>
+            </span>
+          </div>
+          <a href="#" class="upgrade-btn"> Upgrade to Pro </a>
+        </div>
+        <span class="wrapp-btn">
+          <i class="fa-solid fa-chevron-right"></i>
+          <i class="fa-solid fa-chevron-left"></i>
+        </span>
+      </div>
+      <div class="right-div">
+        <div class="header-div">
+          <div class="document-name-wrapper">
+            <div class="icon-wrapper">
+              <i class="fa-regular fa-file-pdf"></i>
+            </div>
+            <span class="document-name">
+              pdf-js-express-default-doc-v2.pdf
+            </span>
+          </div>
+          <div class="down-load-wrapper">
+            <span class="download-icon">
+              <i class="fa-solid fa-arrow-up-from-bracket"></i>
+            </span>
+            <span class="gpt-btn">
+              <span class="icon-wrapper">
+                <img src="./static/icons/chat-gpt.svg" alt="" />
+              </span>
+              <span>GPT-3.5</span>
+            </span>
+          </div>
+        </div>
 
-    function upload() {
+        <div class="right-inner-div">
+          <div id="col-2">
+            <div id="pdf">
+              <embed
+                type="application/pdf"
+                id="embed-wrapper"
+                src="static\images\ARTIFICIAL_INTELLIGENCE.pdf"
+              />
+            </div>
+          </div>
+          <div id="col-3">
+            <div class="main-chat-wrapper">
+              <div id="chat">
+                <div class="user-chat-wrapper">
+                  <div class="img-wrapper">
+                    <img src="./static/images/profile.jpg" alt="" />
+                  </div>
+                  <div class="content-wrapper">
+                    <div class="icon-wrapper">
+                      <i class="fa-solid fa-file-pdf"></i>
+                    </div>
+                    <div class="content-inner-wrapper">
+                      <strong>ARTIFICIAL INTELLIGENCE.pdf</strong>
+                      <span>1 pages</span>
+                    </div>
+                  </div>
+                </div>
+                <div id="summary">
+                  <div class="summery-wrapper">
+                    <p>
+                      The document appears to be titled "What is Artificial
+                      Intelligence?" and was created using Microsoft PowerPoint
+                      2016. The PDF document contains information about the
+                      information flow between the "human" and "machine"
+                      components of a system. It emphasizes the importance of
+                      understanding the capabilities and flexibilities of both
+                      components. The document also includes illustrations and
+                      references to external resources for further information.
+                      The document has a total of 71 pages.
+                    </p>
+                    <h5>Some questions you may ask</h5>
+                    <ul class="suggested-list">
+                      <li>
+                        <button
+                          role="none"
+                          type="button"
+                          onclick='chat2("7A10AE")'
+                          id="7A10AE"
+                        >
+                          <span id="7A10AE-span"
+                            >What is the importance of understanding the
+                            capabilities and flexibilities of both the "human"
+                            and "machine" components in a system?
+                          </span>
+                        </button>
+                      </li>
+                      <li>
+                        <button
+                          role="none"
+                          type="button"
+                          onclick='chat2("DEC6C4")'
+                          id="DEC6C4"
+                        >
+                          <span id="DEC6C4-span"
+                            >How does the information flow between the "human"
+                            and "machine" components in a typical system?
+                          </span>
+                        </button>
+                      </li>
+                      <li>
+                        <button
+                          role="none"
+                          type="button"
+                          onclick='chat2("D1B26C")'
+                          id="D1B26C"
+                        >
+                          <span id="D1B26C-span"
+                            >What external resources are available for further
+                            information on the topic of information flow in
+                            systems?
+                          </span>
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="more-action-wrapper">
+                  <div class="summery-action-warpper">
+                    <ul>
+                      <li>
+                        <span
+                          class="copy-icon"
+                          onclick="copyToClipboard('summary')"
+                        >
+                          <i class="fa-regular fa-thumbs-up"></i>
+                        </span>
+                      </li>
+                      <li>
+                        <span
+                          class="copy-icon"
+                          onclick="copyToClipboard('summary')"
+                        >
+                          <i class="fa-regular fa-thumbs-down"></i>
+                        </span>
+                      </li>
+                      <li>
+                        <span
+                          class="copy-icon"
+                          onclick="copyToClipboard('summary')"
+                        >
+                          <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                        </span>
+                      </li>
+                      <li>
+                        <span
+                          class="copy-icon"
+                          onclick="copyToClipboard('summary')"
+                        >
+                          <i class="fa-solid fa-copy"></i>
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="drop-down-wrapper">
+                    <div class="icon-wrapper">
+                      <i class="fa-regular fa-gem"></i>
+                    </div>
+                    <select name="" id="">
+                        <option value="">translate</option>
+                        <option value="">Auto enrich full text</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- <div id="chat-list">
+                  <p class="keys">what this document is about?</p>
+                  <p
+                    class="values"
+                    id="885FC49FA"
+                    onclick='copyToClipboard("885FC49FA")'
+                  >
+                    The document is titled "What is Artificial Intelligence?"
+                    and it provides information about the concept of artificial
+                    intelligence.
+                  </p>
+                  <p class="keys">
+                    What is the relationship between artificial intelligence and
+                    the concept of information flow in systems?
+                  </p>
+                  <p
+                    class="values"
+                    id="B25AF3CB7"
+                    onclick='copyToClipboard("B25AF3CB7")'
+                  >
+                    The relationship between artificial intelligence and the
+                    concept of information flow in systems is discussed on the
+                    following pages in the PDF document:<br />
+                    <br />1. Page 8: The illustration on this page shows a
+                    typical information flow between the "human" and "machine"
+                    components of a system. It emphasizes the importance of
+                    understanding the capabilities and flexibilities of both
+                    components.<br />
+                    <br />2. Page 59: This page explains that for an agent to be
+                    "intelligent," it must be able to understand the meaning of
+                    information. Information is exchanged in messages and must
+                    be conveyed in a selected representation language. The
+                    receiver must have the ability to interpret the information
+                    correctly according to the intended meaning or semantics.
+                  </p>
+                </div> -->
+              </div>
+              <div id="chat-form" style="display: block">
+                <div class="form-inner-wrapper">
+                  <input
+                    type="hidden"
+                    id="file_hash"
+                    value="CC706c93bbCc5EDE"
+                  />
+                  <input
+                    type="text"
+                    id="queryInput"
+                    placeholder="Send a message"
+                    required=""
+                  />
+                  <button onclick="chat()" type="button" class="ask-button">
+                    <i class="fa-solid fa-paper-plane"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="scan-modal-wrapper">
+        <div class="modal-header-custom">
+          <h3>Get the app now</h3>
+          <span class="close-modal-btn" role="button" type="button">
+            <i class="fa-solid fa-xmark"></i>
+          </span>
+        </div>
+        <div class="modal-body-custom">
+          <p>
+            Visit the App Store or scan with your phone to<br />
+            download instantly
+          </p>
+          <div class="inner-div">
+            <a href="#" target="_blank" class="i-tune-btn">
+              <span class="icon-wrapper">
+                <i class="fa-brands fa-apple"></i>
+              </span>
+              <div class="content-wrapper">
+                <span>Download on the</span>
+                <span>App Store</span>
+              </div>
+            </a>
+            <div class="qr-code-wrapper">
+              <img
+                class="qrcode"
+                src="./static/images/app-qr-code.png"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="empty-bg-wrapper"></div>
+    </div>
+    <script src="https://cwp.taam.ai/chat_with_pdf.js"></script>
+    <script>
+      function upload() {
         var fileInput = document.getElementById("inp-1");
         var file = fileInput.files[0];
 
         if (!file) {
-            alert("Please select a file");
-            return;
+          alert("Please select a file");
+          return;
         }
 
         var formData = new FormData();
@@ -135,40 +425,40 @@
         xhr.open("POST", "/api/chat", true);
         showLoader();
         xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                    var response = JSON.parse(xhr.responseText);
-                    var existingValues = localStorage.getItem(response.file_hash);
-                    var valuesArray = existingValues ? JSON.parse(response) : [];
-                    var chatArray = {};
-                    valuesArray.push({
-                        file_hash: response.file_hash,
-                        file_name: response.file_name,
-                        summary: response.summary,
-                        question: response.question,
-                        chat: chatArray,
-                        type: 'pdf',
-                        time: Math.floor(new Date().getTime() / 1000)
-                    });
-                    localStorage.setItem(
-                        response.file_hash,
-                        JSON.stringify(valuesArray)
-                    );
-                    updateUploadState(response.file_hash);
-                    chat_history();
-                    hideLoader();
-                } else {
-                    // Request failed, handle the error here
-                    console.error("Error:", xhr.status, xhr.statusText);
-                    hideLoader();
-                }
+          if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+              var response = JSON.parse(xhr.responseText);
+              var existingValues = localStorage.getItem(response.file_hash);
+              var valuesArray = existingValues ? JSON.parse(response) : [];
+              var chatArray = {};
+              valuesArray.push({
+                file_hash: response.file_hash,
+                file_name: response.file_name,
+                summary: response.summary,
+                question: response.question,
+                chat: chatArray,
+                type: "pdf",
+                time: Math.floor(new Date().getTime() / 1000),
+              });
+              localStorage.setItem(
+                response.file_hash,
+                JSON.stringify(valuesArray)
+              );
+              updateUploadState(response.file_hash);
+              chat_history();
+              hideLoader();
+            } else {
+              // Request failed, handle the error here
+              console.error("Error:", xhr.status, xhr.statusText);
+              hideLoader();
             }
+          }
         };
 
         xhr.send(formData);
-    }
+      }
 
-    function chat() {
+      function chat() {
         showLoader();
         var file_hash = document.getElementById("file_hash").value;
         var query = document.getElementById("queryInput").value;
@@ -176,53 +466,57 @@
         localstoragedata[0].chat[query] = "......";
         localStorage.setItem(file_hash, JSON.stringify(localstoragedata));
         var keyArr = Object.keys(
-            JSON.parse(localStorage.getItem(file_hash))[0].chat
+          JSON.parse(localStorage.getItem(file_hash))[0].chat
         );
         c = keyArr.join("-->  ");
         var queryRequest = new XMLHttpRequest();
         queryRequest.open("POST", "/api/chat/" + file_hash, true);
         queryRequest.setRequestHeader(
-            "Content-Type",
-            "application/x-www-form-urlencoded"
+          "Content-Type",
+          "application/x-www-form-urlencoded"
         );
         queryRequest.onreadystatechange = function () {
-            if (queryRequest.readyState == 4) {
-                if (queryRequest.status == 200) {
-                    var response = JSON.parse(queryRequest.responseText);
-                    var locadata = JSON.parse(localStorage.getItem(file_hash));
-                    locadata[0].chat[query] = response.response;
-                    localStorage.setItem(file_hash, JSON.stringify(locadata));
-                    kvArr = JSON.parse(localStorage.getItem(file_hash))[0].chat;
-                    var chatlist = document.getElementById("chat-list");
-                    chatlist.innerHTML = Object.entries(kvArr)
-                        .map(function ([k, v]) {
-                            var valuetext = generateRandomHex(9);
-                            return (
-                                "<p class='keys'>" +
-                                k + "</p><p class='values' id='" + valuetext + "' onclick='copyToClipboard(\"" + valuetext + "\")'>" +
+          if (queryRequest.readyState == 4) {
+            if (queryRequest.status == 200) {
+              var response = JSON.parse(queryRequest.responseText);
+              var locadata = JSON.parse(localStorage.getItem(file_hash));
+              locadata[0].chat[query] = response.response;
+              localStorage.setItem(file_hash, JSON.stringify(locadata));
+              kvArr = JSON.parse(localStorage.getItem(file_hash))[0].chat;
+              var chatlist = document.getElementById("chat-list");
+              chatlist.innerHTML = Object.entries(kvArr)
+                .map(function ([k, v]) {
+                  var valuetext = generateRandomHex(9);
+                  return (
+                    "<p class='keys'>" +
+                    k +
+                    "</p><p class='values' id='" +
+                    valuetext +
+                    "' onclick='copyToClipboard(\"" +
+                    valuetext +
+                    "\")'>" +
+                    v +
+                    "</p>"
+                  );
+                })
+                .join("");
+              console.log("response" + response.response);
 
-                                v +
-                                "</p>"
-                            );
-                        })
-                        .join("");
-                    console.log("response" + response.response);
+              // Call saveToLocalStorage after each request
 
-                    // Call saveToLocalStorage after each request
-
-                    document.getElementById("queryInput").value = "";
-                    chat_history();
-                    hideLoader();
-                } else {
-                    console.table("Error: " + queryRequest.status);
-                    hideLoader();
-                }
+              document.getElementById("queryInput").value = "";
+              chat_history();
+              hideLoader();
+            } else {
+              console.table("Error: " + queryRequest.status);
+              hideLoader();
             }
+          }
         };
         queryRequest.send("query=" + c);
-    }
+      }
 
-    function chat2(b) {
+      function chat2(b) {
         showLoader();
         var file_hash = document.getElementById("file_hash").value;
         var query = document.getElementById(b).innerText;
@@ -230,78 +524,101 @@
         localstoragedata[0].chat[query] = "......";
         localStorage.setItem(file_hash, JSON.stringify(localstoragedata));
         var keyArr = Object.keys(
-            JSON.parse(localStorage.getItem(file_hash))[0].chat
+          JSON.parse(localStorage.getItem(file_hash))[0].chat
         );
         c = keyArr.join("-->  ");
         var queryRequest = new XMLHttpRequest();
         queryRequest.open("POST", "/api/chat/" + file_hash, true);
         queryRequest.setRequestHeader(
-            "Content-Type",
-            "application/x-www-form-urlencoded"
+          "Content-Type",
+          "application/x-www-form-urlencoded"
         );
         queryRequest.onreadystatechange = function () {
-            if (queryRequest.readyState == 4) {
-                if (queryRequest.status == 200) {
-                    var response = JSON.parse(queryRequest.responseText);
-                    var locadata = JSON.parse(localStorage.getItem(file_hash));
-                    locadata[0].chat[query] = response.response;
-                    localStorage.setItem(file_hash, JSON.stringify(locadata));
-                    kvArr = JSON.parse(localStorage.getItem(file_hash))[0].chat;
-                    var chatlist = document.getElementById("chat-list");
-                    chatlist.innerHTML = Object.entries(kvArr)
-                        .map(function ([k, v]) {
-                            var valuetext = generateRandomHex(9);
-                            return (
-                                "<p class='keys'>" +
-                                k +
-                                "</p><p class='values' id='" + valuetext + "' onclick='copyToClipboard(\"" + valuetext + "\")'>" +
-                                v +
-                                "</p>"
-                            );
-                        })
-                        .join("");
-                    console.log("response" + response.response);
+          if (queryRequest.readyState == 4) {
+            if (queryRequest.status == 200) {
+              var response = JSON.parse(queryRequest.responseText);
+              var locadata = JSON.parse(localStorage.getItem(file_hash));
+              locadata[0].chat[query] = response.response;
+              localStorage.setItem(file_hash, JSON.stringify(locadata));
+              kvArr = JSON.parse(localStorage.getItem(file_hash))[0].chat;
+              var chatlist = document.getElementById("chat-list");
+              chatlist.innerHTML = Object.entries(kvArr)
+                .map(function ([k, v]) {
+                  var valuetext = generateRandomHex(9);
+                  return (
+                    "<p class='keys'>" +
+                    k +
+                    "</p><p class='values' id='" +
+                    valuetext +
+                    "' onclick='copyToClipboard(\"" +
+                    valuetext +
+                    "\")'>" +
+                    v +
+                    "</p>"
+                  );
+                })
+                .join("");
+              console.log("response" + response.response);
 
-                    // Call saveToLocalStorage after each request
+              // Call saveToLocalStorage after each request
 
-                    document.getElementById("queryInput").value = "";
-                    chat_history();
-                    hideLoader();
-                } else {
-                    console.table("Error: " + queryRequest.status);
-                    hideLoader();
-                }
+              document.getElementById("queryInput").value = "";
+              chat_history();
+              hideLoader();
+            } else {
+              console.table("Error: " + queryRequest.status);
+              hideLoader();
             }
+          }
         };
         queryRequest.send("query=" + c);
-    }
+      }
 
-
-    window.onload = function () {
-        onLoadContent()
+      window.onload = function () {
+        onLoadContent();
         chat_history();
-    };
+      };
 
-    function showLoader() {
+      function showLoader() {
         document.getElementById("loader").style.display = "flex";
-    }
+      }
 
-    // Function to hide loader
-    function hideLoader() {
+      // Function to hide loader
+      function hideLoader() {
         document.getElementById("loader").style.display = "none";
-    }
+      }
 
-    $('document').ready(function(){
-    $("#toolbar").css('display', 'none');
-    });
+      $("document").ready(function () {
+        $("#toolbar").css("display", "none");
+      });
 
+      $(".show-pdf").click(function () {
+        $(".right-inner-div").toggleClass("active");
+        $("#col-2").toggleClass("active");
+      });
+      $(".wrapp-btn").click(function () {
+        $(this).toggleClass("active");
+        $("#col-1").toggleClass("active");
+      });
+      $(".heading-wrapper").click(function () {
+        $(this).toggleClass("active");
+        $(".chat-inner-wrapper").toggleClass("active");
+      });
+      $(".fa-pen-to-square").click(function () {
+        var inputElement = $(this).parent().siblings('input[type="text"]');
+        inputElement.prop("readonly", false);
+        $(this).parent(".action-div").addClass("active");
+        $(this).parent().siblings(".edit-div").addClass("active");
+      });
 
-    $('.show-pdf').click(function () {
-      $('.right-inner-div').toggleClass('active');
-      $('#col-2').toggleClass('active');
-    });
-
-
-</script>
-</body>
+      $(".scan-modal-btn").click(function () {
+        $(".scan-modal-wrapper").addClass("active");
+        $(".empty-bg-wrapper").addClass("show");
+      });
+      $(".close-modal-btn").click(function () {
+        $(".scan-modal-wrapper").removeClass("active");
+        $(".empty-bg-wrapper").removeClass("show");
+      });
+    </script>
+  </body>
 </html>
