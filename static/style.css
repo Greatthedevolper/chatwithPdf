@@ -1021,7 +1021,7 @@ ul {
   width: 100%;
   height: calc(100% - 50px) !important;
   transition: all 0.3s ease-in-out;
-  padding: 20px;
+  padding: 20px 30px;
   border-radius: 20px;
   overflow: hidden;
 }
