@@ -172,7 +172,7 @@
             <div class="icon-wrapper">
               <i class="fa-regular fa-file-pdf"></i>
             </div>
-            <span class="document-name">
+            <span class="document-name text-truncate">
               pdf-js-express-default-doc-v2.pdf
             </span>
           </div>
@@ -886,6 +886,17 @@
       $(".wrapp-btn").click(function () {
         $(this).toggleClass("active");
         $(".sidebar-wrapper").toggleClass("active");
+      });
+
+      if (window.innerWidth < 767) {
+        $(".wrapp-btn").addClass("active");
+        $(".sidebar-wrapper").addClass("active");
+      }
+      $(window).resize(function () {
+        if (window.innerWidth < 767) {
+          $(".wrapp-btn").addClass("active");
+          $(".sidebar-wrapper").addClass("active");
+        }
       });
       $(".heading-wrapper").click(function () {
         $(this).toggleClass("active");

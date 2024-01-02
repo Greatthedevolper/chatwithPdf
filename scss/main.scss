@@ -131,6 +131,16 @@
         }
       }
     }
+    &:not(.active) {
+      @media (max-width: 767px) {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 99;
+        bottom: initial !important;
+      }
+    }
+
     #col-1 {
       width: 100%;
       height: calc(100% - 1px);
@@ -507,6 +517,11 @@
       cursor: pointer;
       color: $white;
       z-index: 2;
+      @media (max-width: 767px) {
+        width: 15px;
+        height: 30px;
+        font-size: 10px;
+      }
       .fa-chevron-right {
         display: none;
       }
@@ -528,6 +543,9 @@
   padding: 8px 8px 8px 0;
   border-radius: 8px;
   flex: 1;
+  @media (max-width: 767px) {
+    width: calc(100% - 60px);
+  }
   .header-div {
     display: flex;
     justify-content: space-between;
@@ -541,10 +559,18 @@
     color: #000;
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 8px 8px 0 0;
+    @media (max-width: 767px) {
+      flex-direction: column;
+      max-height: unset;
+    }
     .document-name-wrapper {
       display: flex;
       align-items: center;
       gap: 12px;
+      @media (max-width: 767px) {
+        gap: 5px;
+        justify-content: center;
+      }
       .icon-wrapper {
         background: rgb(255, 82, 28);
         width: 28px;
@@ -557,11 +583,16 @@
         border-radius: 5px;
       }
       .document-name {
-        width: 100%;
+        max-width: 100%;
         font-size: 14px;
         font-weight: 700;
         line-height: 20px;
         color: $black;
+        white-space: nowrap;
+        @media (max-width: 767px) {
+          font-size: 12px;
+          max-width: 70%;
+        }
       }
     }
     .down-load-wrapper {
@@ -569,6 +600,11 @@
       align-items: center;
       gap: 12px;
       max-width: 130px;
+      @media (max-width: 767px) {
+        max-width: 100%;
+        width: 90%;
+        justify-content: space-between;
+      }
       .download-icon {
         width: 28px;
         height: 28px;
@@ -621,11 +657,18 @@
     width: 100%;
     border-radius: 0 0 8px 8px;
     height: calc(100vh - 65px);
+    @media (max-width: 767px) {
+      height: calc(100vh - 107px);
+      flex-direction: column;
+    }
     #col-3 {
       height: 100% !important;
       max-width: 50%;
       flex: 1;
       border-left: 4px solid rgba(0, 0, 0, 0.06);
+      @media (max-width: 767px) {
+        max-width: 100%;
+      }
       .main-chat-wrapper {
         position: relative;
         // height: calc(100% - 1px);
@@ -634,16 +677,27 @@
           height: calc(100% - 105px);
           overflow-y: auto;
           position: relative;
+          @media (max-width: 767px) {
+            height: calc(100% - 96px);
+            padding: 10px;
+          }
           .user-chat-wrapper {
             display: flex;
             justify-content: flex-start;
             align-items: flex-start;
             gap: 12px;
             margin: 12px 0;
+            @media (max-width: 767px) {
+              max-width: 100%;
+            }
             .img-wrapper {
               width: 40px;
               height: 40px;
               border-radius: 50%;
+              @media (max-width: 767px) {
+                width: 25px;
+                height: 25px;
+              }
               img {
                 width: 100%;
                 height: 100%;
@@ -668,6 +722,9 @@
                 justify-content: center;
                 align-items: center;
                 border-radius: 5px;
+                @media (max-width: 767px) {
+                  font-size: 20px;
+                }
               }
               .content-inner-wrapper {
                 .chat-inner-wrapper {
@@ -679,6 +736,9 @@
                     line-height: 1.2;
                     margin-bottom: 5px;
                     color: #000;
+                    @media (max-width: 767px) {
+                      font-size: 10px;
+                    }
                   }
                   span {
                     display: inline-flex;
@@ -686,6 +746,9 @@
                     height: 12px;
                     line-height: 12px;
                     color: rgba(0, 0, 0, 0.5);
+                    @media (max-width: 767px) {
+                      font-size: 10px;
+                    }
                   }
                 }
               }
@@ -707,6 +770,10 @@
                 color: $black;
                 border-bottom: 1px solid rgba(0, 0, 0, 0.12);
                 padding-bottom: 20px;
+                @media (max-width: 767px) {
+                  font-size: 12px;
+                  word-break: break-all;
+                }
               }
 
               h5 {
@@ -740,6 +807,9 @@
                       line-height: 20px;
                       font-family: inherit;
                       display: inline-flex;
+                      @media (max-width: 767px) {
+                        font-size: 10px;
+                      }
                     }
                   }
                 }
@@ -768,6 +838,9 @@
                     i {
                       font-size: 16px;
                       color: rgba(0, 0, 0, 0.6);
+                      @media (max-width: 767px) {
+                        font-size: 12px;
+                      }
                     }
                     &:hover,
                     &:active {
@@ -798,6 +871,11 @@
                   display: flex;
                   align-items: center;
                   gap: 8px;
+                  @media (max-width: 767px) {
+                    i {
+                      display: none;
+                    }
+                  }
 
                   &:hover,
                   &:active {
@@ -811,6 +889,10 @@
                   min-width: max-content;
                   inset: 100% auto auto 0px !important;
                   transform: translate(0) !important;
+                  @media (max-width: 767px) {
+                    transform: translate(-50%, 0) !important;
+                    inset: 100% auto auto auto !important;
+                  }
                   .dropdown-item {
                     padding: 8px 10px;
                     border-radius: 5px;
@@ -824,6 +906,7 @@
                       line-height: 13px;
                       color: rgba(0, 0, 0, 0.88);
                     }
+
                     &:hover,
                     &.active {
                       background: #f3f0ff;
@@ -846,6 +929,9 @@
               align-items: flex-start;
               justify-content: flex-start;
               margin: 15px 0;
+              @media (max-width: 767px) {
+                grid-template-columns: 30px auto;
+              }
               .img-wrapper {
                 width: 40px;
                 height: 40px;
@@ -854,6 +940,10 @@
                 align-items: center;
                 justify-content: center;
                 margin-top: 10px;
+                @media (max-width: 767px) {
+                  width: 25px;
+                  height: 25px;
+                }
                 img {
                   width: 100%;
                   height: 100%;
@@ -874,6 +964,10 @@
                   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
                   p {
                     margin: 0;
+                    @media (max-width: 767px) {
+                      font-size: 12px;
+                      word-break: break-all;
+                    }
                   }
                 }
               }
@@ -903,6 +997,9 @@
             0 4px 12px rgba(0, 0, 0, 0.06);
           max-width: 90%;
           margin: 0 auto;
+          @media (max-width: 767px) {
+            max-width: 100%;
+          }
           .form-inner-wrapper {
             display: flex;
             justify-content: center;
@@ -978,6 +1075,11 @@
                 flex-direction: column;
                 gap: 7px;
                 padding: 15px 10px;
+                @media (max-width: 767px) {
+                  min-width: 250px;
+                  inset: -6px 0 auto 0 !important;
+                  transform: translate(-50%, -100%) !important;
+                }
                 .dropdown-item {
                   white-space: normal;
                   font-size: 13px;
@@ -1054,6 +1156,9 @@
   border-radius: 20px;
   overflow: hidden;
   flex: 1;
+  @media (max-width: 767px) {
+    display: none;
+  }
 }
 #col-2.active {
   //   width: 750px;
