@@ -668,7 +668,7 @@ ul {
 }
 @media (max-width: 767px) {
   .right-div {
-    width: calc(100% - 60px);
+    width: calc(100vh - 60px);
   }
 }
 .right-div .header-div {
