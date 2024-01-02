@@ -79,6 +79,12 @@ ul {
   width: 400px;
   display: none;
 }
+@media (max-width: 767px) {
+  .scan-modal-wrapper {
+    width: 95%;
+    max-width: 400px;
+  }
+}
 .scan-modal-wrapper.active {
   display: flex;
   flex-direction: column;
@@ -110,6 +116,11 @@ ul {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
+}
+@media (max-width: 767px) {
+  .scan-modal-wrapper .modal-body-custom .inner-div {
+    flex-wrap: wrap;
+  }
 }
 .scan-modal-wrapper .modal-body-custom .inner-div .i-tune-btn {
   display: flex;
@@ -298,7 +309,7 @@ ul {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 99;
+    z-index: 4;
     bottom: initial !important;
   }
 }

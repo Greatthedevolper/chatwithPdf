@@ -87,6 +87,10 @@ ul {
   padding: 24px;
   width: 400px;
   display: none;
+  @media (max-width: 767px) {
+    width: 95%;
+    max-width: 400px;
+  }
   &.active {
     display: flex;
     flex-direction: column;
@@ -119,6 +123,9 @@ ul {
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
+      @media (max-width: 767px) {
+        flex-wrap: wrap;
+      }
       .i-tune-btn {
         display: flex;
         justify-content: flex-start;
