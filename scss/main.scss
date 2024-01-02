@@ -3,7 +3,7 @@
 #main {
   display: flex;
   flex-direction: row;
-  height: calc(100vh - 1px) !important;
+  height: calc(100% - 1px) !important;
   //   gap: 5px;
   .sidebar-wrapper {
     background: $bg-color;
@@ -545,7 +545,7 @@
   flex: 1;
   @media (max-width: 767px) {
     width: calc(100% - 60px);
-    height: 100vh;
+    height: 100%;
   }
   .header-div {
     display: flex;
@@ -687,9 +687,9 @@
     background: #f6f6f6;
     width: 100%;
     border-radius: 0 0 8px 8px;
-    height: calc(100vh - 65px);
+    height: calc(100% - 65px);
     @media (max-width: 767px) {
-      height: calc(100vh - 107px);
+      height: calc(100% - 93px);
       flex-direction: column;
     }
     #col-3 {
