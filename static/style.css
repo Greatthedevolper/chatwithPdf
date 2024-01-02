@@ -1321,7 +1321,7 @@ ul {
 @media (max-width: 767px) {
   #col-2 {
     max-width: calc(100% - 60px);
-    width: calc(100% - 1px);
+    width: calc(100% - 60px);
     height: 0;
     position: absolute;
     top: 96px;
