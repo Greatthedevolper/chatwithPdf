@@ -688,7 +688,7 @@ ul {
 }
 @media (max-width: 767px) {
   .right-div .header-div {
-    flex-direction: column;
+    flex-wrap: wrap;
     max-height: unset;
   }
 }
@@ -734,11 +734,11 @@ ul {
   gap: 12px;
   max-width: 130px;
 }
-@media (max-width: 767px) {
+@media (max-width: 480px) {
   .right-div .header-div .down-load-wrapper {
-    max-width: 100%;
-    width: 90%;
     justify-content: space-between;
+    max-width: 100%;
+    width: 100%;
   }
 }
 .right-div .header-div .down-load-wrapper .download-icon {
@@ -780,6 +780,35 @@ ul {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+.right-div .header-div .down-load-wrapper .mobile-pdf-show-btn {
+  width: 28px;
+  height: 28px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  align-items: center;
+  justify-content: center;
+  color: rgba(0, 0, 0, 0.8);
+  display: none;
+}
+@media (max-width: 767px) {
+  .right-div .header-div .down-load-wrapper .mobile-pdf-show-btn {
+    display: inline-flex;
+  }
+}
+.right-div .header-div .down-load-wrapper .mobile-pdf-show-btn .fa-eye-slash {
+  display: none;
+}
+.right-div .header-div .down-load-wrapper .mobile-pdf-show-btn.active .fa-eye-slash {
+  display: inline-block;
+}
+.right-div .header-div .down-load-wrapper .mobile-pdf-show-btn.active .fa-eye {
+  display: none;
+}
+.right-div .header-div .down-load-wrapper .mobile-pdf-show-btn:hover, .right-div .header-div .down-load-wrapper .mobile-pdf-show-btn:active {
+  background: rgba(0, 0, 0, 0.8);
+  color: var(--white);
 }
 .right-div .right-inner-div {
   display: flex;

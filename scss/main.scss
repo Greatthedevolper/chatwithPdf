@@ -561,7 +561,7 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 8px 8px 0 0;
     @media (max-width: 767px) {
-      flex-direction: column;
+      flex-wrap: wrap;
       max-height: unset;
     }
     .document-name-wrapper {
@@ -601,10 +601,10 @@
       align-items: center;
       gap: 12px;
       max-width: 130px;
-      @media (max-width: 767px) {
-        max-width: 100%;
-        width: 90%;
+      @media (max-width: 480px) {
         justify-content: space-between;
+        max-width: 100%;
+        width: 100%;
       }
       .download-icon {
         width: 28px;
@@ -644,6 +644,36 @@
           display: inline-flex;
           align-items: center;
           justify-content: center;
+        }
+      }
+      .mobile-pdf-show-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+        border-radius: 8px;
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        align-items: center;
+        justify-content: center;
+        color: rgba(0, 0, 0, 0.8);
+        display: none;
+        @media (max-width: 767px) {
+          display: inline-flex;
+        }
+        .fa-eye-slash {
+          display: none;
+        }
+        &.active {
+          .fa-eye-slash {
+            display: inline-block;
+          }
+          .fa-eye {
+            display: none;
+          }
+        }
+        &:hover,
+        &:active {
+          background: rgba(0, 0, 0, 0.8);
+          color: $white;
         }
       }
     }
@@ -1151,7 +1181,7 @@
 
 #col-2 {
   max-width: 50%;
-  height: calc(100% - 1px) ;
+  height: calc(100% - 1px);
   transition: all 0.3s ease-in-out;
   padding: 20px 30px;
   border-radius: 20px;
@@ -1170,7 +1200,7 @@
   }
   &.active {
     @media (max-width: 767px) {
-      height: calc(100vh - 96px)!important;
+      height: calc(100vh - 96px) !important;
     }
   }
 }

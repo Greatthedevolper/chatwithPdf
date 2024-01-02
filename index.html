@@ -180,6 +180,10 @@
             <span class="download-icon">
               <i class="fa-solid fa-arrow-up-from-bracket"></i>
             </span>
+            <span class="mobile-pdf-show-btn">
+              <i class="fa-solid fa-eye"></i>
+              <i class="fa-solid fa-eye-slash"></i>
+            </span>
             <span class="gpt-btn">
               <span class="icon-wrapper">
                 <img src="./static/icons/chat-gpt.svg" alt="" />
@@ -880,8 +884,8 @@
       });
 
       // small functions for page
-      $(".show-pdf").click(function () {
-        $(".right-inner-div").toggleClass("active");
+      $(".mobile-pdf-show-btn").click(function () {
+        $(this).toggleClass("active");
         $("#col-2").toggleClass("active");
       });
       $(".wrapp-btn").click(function () {
