@@ -1315,7 +1315,6 @@ ul {
   height: calc(100% - 1px);
   transition: all 0.3s ease-in-out;
   padding: 20px 30px;
-  border-radius: 20px;
   overflow: hidden;
   flex: 1;
 }
