@@ -3,6 +3,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>File Upload with XMLHttpRequest</title>
+    <link rel="stylesheet" href="/static/bootstrap.min.css" />
     <link rel="stylesheet" href="/static/style.css" />
     <link rel="stylesheet" href="/static/all.min.css" />
 
@@ -14,148 +15,157 @@
       <div class="loader-spinner"></div>
     </div>
     <div id="main">
-      <div id="col-1">
-        <div id="chat-history">
+      <!-- side bar start -->
+      <aside class="sidebar-wrapper">
+        <div id="col-1">
           <a class="logo-wrapper">
             <div class="icon-wrapper">
               <img src="static/images/Logo.svg" alt="" />
             </div>
             <span>TAAM.Ai</span>
           </a>
-          <ul class="tabs-wrapper">
-            <li>
-              <a href="#" class="new-chat-btn">
-                <span class="icon-wrapper">
-                  <i class="fa-solid fa-plus"></i>
-                </span>
-                <span>New Chat</span>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="chat-btn pdf-btn" id="chat-with-pdf">
-                <i class="fa-solid fa-folder-open"></i>
-                <span>Chat width Document</span>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="chat-btn web-btn" id="chat-with-web">
-                <i class="fa-regular fa-pen-to-square"></i>
-                <span>Ai Chat</span>
-              </a>
-            </li>
-          </ul>
-          <div class="chat-inner-wrapper">
-            <div class="heading-wrapper">
-              <i class="fa-solid fa-clock-rotate-left"></i>
-              <h3>Chat history</h3>
-              <i class="fa-solid fa-chevron-down"></i>
-              <i class="fa-solid fa-chevron-right"></i>
-            </div>
-            <ul>
+          <div id="chat-history">
+            <ul class="tabs-wrapper">
               <li>
-                <button
-                  class="list-item active list_item_DAf6AA42E2C5E914"
-                  type="button"
-                  key="DAf6AA42E2C5E914"
-                  onclick="loadChat('DAf6AA42E2C5E914', 'html')"
-                >
-                  <i class="fa-solid fa-square"></i>
-                  <input
-                    type="text"
-                    value="pdf-js-express-default-doc-v2.pdf"
-                    readonly
-                  />
-                  <div class="action-div">
-                    <i class="fa-regular fa-pen-to-square"></i>
-                    <i class="fa-solid fa-trash-can"></i>
-                  </div>
-                  <div class="edit-div">
-                    <i class="fa-solid fa-check"></i>
-                    <i class="fa-solid fa-xmark"></i>
-                  </div>
-                </button>
+                <a href="#" class="new-chat-btn" id="menu">
+                  <span class="icon-wrapper">
+                    <i class="fa-solid fa-plus"></i>
+                  </span>
+                  <span>New Chat</span>
+                </a>
               </li>
               <li>
-                <button
-                  class="list-item list_item_fAf946Cc02DD7770"
-                  type="button"
-                  key="fAf946Cc02DD7770"
-                  onclick="loadChat('fAf946Cc02DD7770', 'html')"
-                >
-                  <i class="fa-solid fa-square"></i>
-                  <input type="text" value="Pinia-Cheat-Sheet.pdf" readonly />
-                  <div class="action-div">
-                    <i class="fa-regular fa-pen-to-square"></i>
-                    <i class="fa-solid fa-trash-can"></i>
-                  </div>
-                  <div class="edit-div">
-                    <i class="fa-solid fa-check"></i>
-                    <i class="fa-solid fa-xmark"></i>
-                  </div>
-                </button>
+                <a href="#" class="chat-btn pdf-btn" id="chat-with-pdf">
+                  <i class="fa-solid fa-folder-open"></i>
+                  <span>Chat width Document</span>
+                </a>
               </li>
-
               <li>
-                <button
-                  class="list-item list_item_E5ecf9ee8b7DAB40"
-                  type="button"
-                  key="E5ecf9ee8b7DAB40"
-                  onclick="loadChat('E5ecf9ee8b7DAB40', 'html')"
-                >
-                  <i class="fa-solid fa-square"></i>
-                  <input type="text" value="priscription.pdf" readonly />
-                  <div class="action-div">
-                    <i class="fa-regular fa-pen-to-square"></i>
-                    <i class="fa-solid fa-trash-can"></i>
-                  </div>
-                  <div class="edit-div">
-                    <i class="fa-solid fa-check"></i>
-                    <i class="fa-solid fa-xmark"></i>
-                  </div>
-                </button>
+                <a href="#" class="chat-btn web-btn" id="chat-with-web">
+                  <i class="fa-regular fa-pen-to-square"></i>
+                  <span>Ai Chat</span>
+                </a>
               </li>
             </ul>
-          </div>
-        </div>
-        <div id="menu">
-          <form id="uploadForm">
-            <label for="inp-1">
-              <span> + New Chat</span>
-              <span class="drop-text">Drop PDF here</span>
-              <input
-                id="inp-1"
-                type="file"
-                name="file"
-                accept="application/pdf"
-              />
-            </label>
-            <button
-              id="btn-1"
-              class="upload-btn"
-              type="button"
-              onclick="upload()"
-            >
-              Upload
-            </button>
-          </form>
-        </div>
-        <div class="profile-div">
-          <div class="profile-inner-wrapper">
-            <div class="img-wrapper">
-              <img src="./static/images/profile.jpg" alt="" />
+            <div class="chat-inner-wrapper">
+              <div class="heading-wrapper">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <h3>Chat history</h3>
+                <i class="fa-solid fa-chevron-down"></i>
+                <i class="fa-solid fa-chevron-right"></i>
+              </div>
+              <ul>
+                <li>
+                  <button
+                    class="list-item active list_item_DAf6AA42E2C5E914"
+                    type="button"
+                    key="DAf6AA42E2C5E914"
+                    onclick="loadChat('DAf6AA42E2C5E914', 'html')"
+                  >
+                    <i class="fa-solid fa-square"></i>
+                    <input
+                      type="text"
+                      value="pdf-js-express-default-doc-v2.pdf"
+                      readonly
+                    />
+                    <div class="action-div">
+                      <i class="fa-regular fa-pen-to-square"></i>
+                      <i class="fa-solid fa-trash-can"></i>
+                    </div>
+                    <div class="edit-div">
+                      <i class="fa-solid fa-check"></i>
+                      <i class="fa-solid fa-xmark"></i>
+                    </div>
+                  </button>
+                </li>
+                <li>
+                  <button
+                    class="list-item list_item_fAf946Cc02DD7770"
+                    type="button"
+                    key="fAf946Cc02DD7770"
+                    onclick="loadChat('fAf946Cc02DD7770', 'html')"
+                  >
+                    <i class="fa-solid fa-square"></i>
+                    <input type="text" value="Pinia-Cheat-Sheet.pdf" readonly />
+                    <div class="action-div">
+                      <i class="fa-regular fa-pen-to-square"></i>
+                      <i class="fa-solid fa-trash-can"></i>
+                    </div>
+                    <div class="edit-div">
+                      <i class="fa-solid fa-check"></i>
+                      <i class="fa-solid fa-xmark"></i>
+                    </div>
+                  </button>
+                </li>
+
+                <li>
+                  <button
+                    class="list-item list_item_E5ecf9ee8b7DAB40"
+                    type="button"
+                    key="E5ecf9ee8b7DAB40"
+                    onclick="loadChat('E5ecf9ee8b7DAB40', 'html')"
+                  >
+                    <i class="fa-solid fa-square"></i>
+                    <input type="text" value="priscription.pdf" readonly />
+                    <div class="action-div">
+                      <i class="fa-regular fa-pen-to-square"></i>
+                      <i class="fa-solid fa-trash-can"></i>
+                    </div>
+                    <div class="edit-div">
+                      <i class="fa-solid fa-check"></i>
+                      <i class="fa-solid fa-xmark"></i>
+                    </div>
+                  </button>
+                </li>
+              </ul>
             </div>
-            <h4>Tameem Hezam</h4>
-            <span role="button" type="button" class="scan-modal-btn">
-              <i class="fa-solid fa-mobile-button"></i>
-            </span>
           </div>
-          <a href="#" class="upgrade-btn"> Upgrade to Pro </a>
+          <!-- <div id="menu">
+            <form id="uploadForm">
+              <label for="inp-1">
+                <span> + New Chat</span>
+                <span class="drop-text">Drop PDF here</span>
+                <input
+                  id="inp-1"
+                  type="file"
+                  name="file"
+                  accept="application/pdf"
+                />
+              </label>
+              <button
+                id="btn-1"
+                class="upload-btn"
+                type="button"
+                onclick="upload()"
+              >
+                Upload
+              </button>
+            </form>
+          </div> -->
+          <div class="profile-div">
+            <div class="profile-inner-wrapper">
+              <div class="img-wrapper">
+                <img src="./static/images/profile.jpg" alt="" />
+              </div>
+              <h4>Tameem Hezam</h4>
+              <span role="button" type="button" class="scan-modal-btn">
+                <i class="fa-solid fa-mobile-button"></i>
+              </span>
+            </div>
+            <a href="#" class="upgrade-btn">
+              <span>Upgrade to Pro</span>
+              <i class="fa-solid fa-crown"></i>
+            </a>
+          </div>
         </div>
         <span class="wrapp-btn">
           <i class="fa-solid fa-chevron-right"></i>
           <i class="fa-solid fa-chevron-left"></i>
         </span>
-      </div>
+      </aside>
+
+      <!-- side bar end -->
+
       <div class="right-div">
         <div class="header-div">
           <div class="document-name-wrapper">
@@ -201,8 +211,10 @@
                       <i class="fa-solid fa-file-pdf"></i>
                     </div>
                     <div class="content-inner-wrapper">
-                      <strong>ARTIFICIAL INTELLIGENCE.pdf</strong>
-                      <span>1 pages</span>
+                      <div class="chat-inner-wrapper">
+                        <strong>ARTIFICIAL INTELLIGENCE.pdf</strong>
+                        <span>1 pages</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -273,7 +285,12 @@
                           class="copy-icon"
                           onclick="copyToClipboard('summary')"
                         >
-                          <i class="fa-regular fa-thumbs-up"></i>
+                          <i
+                            class="fa-regular fa-thumbs-up"
+                            tabindex="0"
+                            data-bs-toggle="tooltip"
+                            data-bs-title="Disabled tooltip"
+                          ></i>
                         </span>
                       </li>
                       <li>
@@ -303,13 +320,28 @@
                     </ul>
                   </div>
                   <div class="drop-down-wrapper">
-                    <div class="icon-wrapper">
-                      <i class="fa-regular fa-gem"></i>
+                    <div class="dropdown">
+                      <span
+                        type="button"
+                        class="btn dropdown-toggle btn-sm"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                        ><i class="fa-regular fa-gem"></i> Enrich</span
+                      >
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a class="dropdown-item" href="#">
+                            <span>translate</span>
+                            <i class="fa-solid fa-chevron-right"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item" href="#"
+                            ><span>Auto enrich full text</span></a
+                          >
+                        </li>
+                      </ul>
                     </div>
-                    <select name="" id="">
-                      <option value="">translate</option>
-                      <option value="">Auto enrich full text</option>
-                    </select>
                   </div>
                 </div>
 
@@ -319,7 +351,9 @@
                       <img src="./static/images/profile.jpg" alt="" />
                     </div>
                     <div class="content-wrapper">
-                      <p>what this document is about?</p>
+                      <div class="chat-inner-wrapper">
+                        <p>what this document is about?</p>
+                      </div>
                     </div>
                   </div>
 
@@ -332,21 +366,97 @@
                       <img src="./static/icons/chat-gpt.svg" alt="" />
                     </div>
                     <div class="content-wrapper">
-                      <p>
-                        The document is titled "What is Artificial
-                        Intelligence?" and it provides information about the
-                        concept of artificial intelligence.
-                      </p>
+                      <div class="chat-inner-wrapper">
+                        <p>
+                          The document is titled "What is Artificial
+                          Intelligence?" and it provides information about the
+                          concept of artificial intelligence.
+                        </p>
+                      </div>
+                      <div class="more-action-wrapper">
+                        <div class="summery-action-warpper">
+                          <ul>
+                            <li>
+                              <span
+                                class="copy-icon"
+                                onclick="copyToClipboard('summary')"
+                              >
+                                <i
+                                  class="fa-regular fa-thumbs-up"
+                                  tabindex="0"
+                                  data-bs-toggle="tooltip"
+                                  data-bs-title="Disabled tooltip"
+                                ></i>
+                              </span>
+                            </li>
+                            <li>
+                              <span
+                                class="copy-icon"
+                                onclick="copyToClipboard('summary')"
+                              >
+                                <i class="fa-regular fa-thumbs-down"></i>
+                              </span>
+                            </li>
+                            <li>
+                              <span
+                                class="copy-icon"
+                                onclick="copyToClipboard('summary')"
+                              >
+                                <i
+                                  class="fa-solid fa-arrow-up-from-bracket"
+                                ></i>
+                              </span>
+                            </li>
+                            <li>
+                              <span
+                                class="copy-icon"
+                                onclick="copyToClipboard('summary')"
+                              >
+                                <i class="fa-solid fa-copy"></i>
+                              </span>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="drop-down-wrapper">
+                          <div class="dropdown">
+                            <span
+                              type="button"
+                              class="btn dropdown-toggle btn-sm"
+                              data-bs-toggle="dropdown"
+                              aria-expanded="false"
+                              ><i class="fa-regular fa-gem"></i> Enrich</span
+                            >
+                            <ul class="dropdown-menu">
+                              <li>
+                                <a class="dropdown-item" href="#">
+                                  <span>translate</span>
+                                  <i class="fa-solid fa-chevron-right"></i>
+                                </a>
+                              </li>
+                              <li>
+                                <a class="dropdown-item" href="#"
+                                  ><span>Auto enrich full text</span></a
+                                >
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  
+
                   <div class="keys">
                     <div class="img-wrapper">
                       <img src="./static/images/profile.jpg" alt="" />
                     </div>
                     <div class="content-wrapper">
-                      <p>What is the relationship between artificial intelligence and
-                        the concept of information flow in systems?</p>
+                      <div class="chat-inner-wrapper">
+                        <p>
+                          What is the relationship between artificial
+                          intelligence and the concept of information flow in
+                          systems?
+                        </p>
+                      </div>
                     </div>
                   </div>
                   <div
@@ -358,27 +468,173 @@
                       <img src="./static/icons/chat-gpt.svg" alt="" />
                     </div>
                     <div class="content-wrapper">
-                      <p>
-                        The relationship between artificial intelligence and the
-                    concept of information flow in systems is discussed on the
-                    following pages in the PDF document:<br />
-                    <br />1. Page 8: The illustration on this page shows a
-                    typical information flow between the "human" and "machine"
-                    components of a system. It emphasizes the importance of
-                    understanding the capabilities and flexibilities of both
-                    components.<br />
-                    <br />2. Page 59: This page explains that for an agent to be
-                    "intelligent," it must be able to understand the meaning of
-                    information. Information is exchanged in messages and must
-                    be conveyed in a selected representation language. The
-                    receiver must have the ability to interpret the information
-                    correctly according to the intended meaning or semantics.
-                      </p>
+                      <div class="chat-inner-wrapper">
+                        <p>
+                          The relationship between artificial intelligence and
+                          the concept of information flow in systems is
+                          discussed on the following pages in the PDF
+                          document:<br />
+                          <br />1. Page 8: The illustration on this page shows a
+                          typical information flow between the "human" and
+                          "machine" components of a system. It emphasizes the
+                          importance of understanding the capabilities and
+                          flexibilities of both components.<br />
+                          <br />2. Page 59: This page explains that for an agent
+                          to be "intelligent," it must be able to understand the
+                          meaning of information. Information is exchanged in
+                          messages and must be conveyed in a selected
+                          representation language. The receiver must have the
+                          ability to interpret the information correctly
+                          according to the intended meaning or semantics.
+                        </p>
+                      </div>
+                      <div class="more-action-wrapper">
+                        <div class="summery-action-warpper">
+                          <ul>
+                            <li>
+                              <span
+                                class="copy-icon"
+                                onclick="copyToClipboard('summary')"
+                              >
+                                <i
+                                  class="fa-regular fa-thumbs-up"
+                                  tabindex="0"
+                                  data-bs-toggle="tooltip"
+                                  data-bs-title="Disabled tooltip"
+                                ></i>
+                              </span>
+                            </li>
+                            <li>
+                              <span
+                                class="copy-icon"
+                                onclick="copyToClipboard('summary')"
+                              >
+                                <i class="fa-regular fa-thumbs-down"></i>
+                              </span>
+                            </li>
+                            <li>
+                              <span
+                                class="copy-icon"
+                                onclick="copyToClipboard('summary')"
+                              >
+                                <i
+                                  class="fa-solid fa-arrow-up-from-bracket"
+                                ></i>
+                              </span>
+                            </li>
+                            <li>
+                              <span
+                                class="copy-icon"
+                                onclick="copyToClipboard('summary')"
+                              >
+                                <i class="fa-solid fa-copy"></i>
+                              </span>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="drop-down-wrapper">
+                          <div class="dropdown">
+                            <span
+                              type="button"
+                              class="btn dropdown-toggle btn-sm"
+                              data-bs-toggle="dropdown"
+                              aria-expanded="false"
+                              ><i class="fa-regular fa-gem"></i> Enrich</span
+                            >
+                            <ul class="dropdown-menu">
+                              <li>
+                                <a class="dropdown-item" href="#">
+                                  <span>translate</span>
+                                  <i class="fa-solid fa-chevron-right"></i>
+                                </a>
+                              </li>
+                              <li>
+                                <a class="dropdown-item" href="#"
+                                  ><span>Auto enrich full text</span></a
+                                >
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div id="chat-form" style="display: block">
+              <div id="chat-form">
+                <div class="form-action-wrapper d-flex align-items-center">
+                  <div class="paper-suggestion-wrapper dropdown">
+                    <button
+                      type="button"
+                      class="btn btn-sm bg-transparent border-0 dropdown-toggle"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      Standard
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <span class="p-2 heading-dropdown"
+                          >Choose file Type</span
+                        >
+                      </li>
+                      <li>
+                        <a class="dropdown-item active" href="#">
+                          <span>Standard</span>
+                          <i class="fa-solid fa-check"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <span>Paper </span>
+                          <i class="fa-solid fa-check"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">
+                          <span>Resume </span>
+                          <i class="fa-solid fa-check"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="dropdown summer-suggestion-wrapper">
+                    <a
+                      href="#"
+                      type="button"
+                      class="dropdown-toggle hide-arrow"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      summery
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a class="dropdown-item" href="#"
+                          >Summarize in one sentence to capture the main
+                          idea.</a
+                        >
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#"
+                          >Summarize into 5 bullet points.</a
+                        >
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#"
+                          >Make summary longer, human-like but concise and
+                          comprehensive.</a
+                        >
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#"
+                          >Provide a detailed summary with key quotes.</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
                 <div class="form-inner-wrapper">
                   <input
                     type="hidden"
@@ -436,6 +692,8 @@
       <div class="empty-bg-wrapper"></div>
     </div>
     <script src="https://cwp.taam.ai/chat_with_pdf.js"></script>
+    <script src="./static/js/bootstrap.min.js"></script>
+
     <script>
       function upload() {
         var fileInput = document.getElementById("inp-1");
@@ -620,13 +878,14 @@
         $("#toolbar").css("display", "none");
       });
 
+      // small functions for page
       $(".show-pdf").click(function () {
         $(".right-inner-div").toggleClass("active");
         $("#col-2").toggleClass("active");
       });
       $(".wrapp-btn").click(function () {
         $(this).toggleClass("active");
-        $("#col-1").toggleClass("active");
+        $(".sidebar-wrapper").toggleClass("active");
       });
       $(".heading-wrapper").click(function () {
         $(this).toggleClass("active");

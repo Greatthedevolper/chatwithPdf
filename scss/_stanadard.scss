@@ -55,7 +55,7 @@ ul {
 /* Track */
 
 *::-webkit-scrollbar-track {
-  background: var(--white);
+  background: $bg-color;
 }
 
 /* Handle */
@@ -69,7 +69,7 @@ ul {
 /* Handle on hover */
 
 *::-webkit-scrollbar-thumb:hover {
-  background: red;
+  background: $white;
   width: 6px;
   height: 6px;
 }
@@ -175,3 +175,10 @@ ul {
   }
 }
 // modal-bg-wrapper scss end
+
+.hide-arrow {
+  &:after,
+  &:before {
+    content: unset!important;
+  }
+}
