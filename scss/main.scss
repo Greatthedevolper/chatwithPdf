@@ -544,7 +544,8 @@
   border-radius: 8px;
   flex: 1;
   @media (max-width: 767px) {
-    width: calc(100vh - 60px);
+    width: calc(100% - 60px);
+    height: 100vh;
   }
   .header-div {
     display: flex;
