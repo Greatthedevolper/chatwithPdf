@@ -898,6 +898,9 @@
           $(".wrapp-btn").addClass("active");
           $(".sidebar-wrapper").addClass("active");
         }
+
+        let vh = window.innerHeight * 0.01;
+        $(":root").css("--vh", `${vh}px`);
       });
       $(".heading-wrapper").click(function () {
         $(this).toggleClass("active");
@@ -918,7 +921,6 @@
         $(".scan-modal-wrapper").removeClass("active");
         $(".empty-bg-wrapper").removeClass("show");
       });
-
     </script>
   </body>
 </html>
