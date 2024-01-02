@@ -1151,7 +1151,7 @@
 
 #col-2 {
   max-width: 50%;
-  height: calc(100% - 1px) !important;
+  height: calc(100% - 1px) ;
   transition: all 0.3s ease-in-out;
   padding: 20px 30px;
   border-radius: 20px;
@@ -1165,6 +1165,8 @@
     top: 96px;
     left: 0;
     right: 0;
+    z-index: 9;
+    padding: 0;
   }
   &.active {
     @media (max-width: 767px) {
